@@ -15,9 +15,9 @@
 
 #show: iut-orsay-report.with(
   student-name: [Tiphaine Patraque],
-  title: [Rapport d'apprentissage],
-  subtitle: [Cercle des sorcières du Disque-monde],
-  keywords: ("Causse", "sorcellerie", "magie occulte"),
+  title: [Rapport de projet S601],
+  subtitle: [Têtologie],
+  keywords: ("Causse", "sorcellerie", "magie occulte", "têtologie"),
   abstract: lorem(200),
   diploma: [BUT Sorcellerie],
   specialty: [Parcours A : magie des miroirs],

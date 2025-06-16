@@ -67,9 +67,9 @@ The template will initialize your package with a sample call to the `iut-orsay-r
 
 #show: paris-saclay-thesis.with(
   student-name: [Tiphaine Patraque],
-  title: [Rapport d'apprentissage],
-  subtitle: [Cercle des sorcières du Disque-monde],
-  keywords: ("Causse", "sorcellerie", "magie occulte"),
+  title: [Rapport de projet S601],
+  subtitle: [Têtologie],
+  keywords: ("Causse", "sorcellerie", "magie occulte", "têtologie"
   abstract: lorem(200),
   diploma: [BUT Sorcellerie],
   specialty: [Parcours A : magie des miroirs],

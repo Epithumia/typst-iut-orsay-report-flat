@@ -1,3 +1,4 @@
+#import "@preview/colorful-boxes:1.4.1": colorbox
 // The main color of the Paris-Saclay University visual identity
 #let prune = rgb(99, 0, 60)
 
@@ -12,65 +13,72 @@
   baseline: 0.2em
 )
 
-// An highlighted block for when the doctoral school logo is not selected
-#let missing-doctoral-school-logo = block(
-  height: 65pt,
-  width: 200pt,
-  fill: yellow-highlighting
-)[
-  #align(center+horizon)[
-    Logo de l'école doctorale
+// A box to have a small summary for a section/sub-section
+#let summary(body) = {
+  colorbox(
+    title: text(font: "Segoe UI This")[En résumé],
+    radius: 2pt,
+    width: auto,
+    box-colors: (
+      prune: (stroke: prune, fill: white, title: white),
+    ),
+    color: "prune"
+  )[
+    #body
+    #v(2pt)
   ]
-]
+}
+
+// Allows to have non numbered sections, eg. 
+//= Addendum <unnumbered>
+
+#show selector(<unnumbered>): set heading(numbering: none)
+
+// List of tables
+#let table-list() = {
+  heading("Liste des tables",numbering:none)
+  outline(target: figure.where(kind: table), title: none)
+}
+
+// List of figures
+#let figure-list() = {
+  heading("Liste des figures",numbering:none)
+  outline(target: figure.where(kind: image), title: none)
+}
+
+// Lexicon
+#let lexicon(content) = {
+  heading("Lexique",numbering:none)
+  (content)
+}
 
 // The function takes the whole document as `body` parameter
 // and formats it for a Paris-Saclay University thesis
-#let paris-saclay-thesis(
+#let iut-orsay-report(
 
   // The first and last names of the candidate
-  candidate-name: highlight[Prénom Nom],
+  student-name: highlight[Prénom Nom],
 
   // The thesis title in French
-  title-fr: highlight[Titre de la thèse],
+  title: highlight[Titre de la thèse],
 
   // The translated thesis title in English
-  title-en: highlight[Title of the thesis],
+  subtitle: highlight[Title of the thesis],
 
   // The keywords of the thesis subject, in French
-  keywords-fr: (highlight[Mot-clé 1], highlight[Mot-clé 2], highlight[Mot-clé 3]),
-
-  // The translated keywords of the thesis subject, in English
-  keywords-en: (highlight[Keyword 1], highlight[Keyword 2], highlight[Keyword 3]),
+  keywords: (highlight[Mot-clé 1], highlight[Mot-clé 2], highlight[Mot-clé 3]),
 
   // Abstract of the thesis, in French
-  abstract-fr: highlight(lorem(200)),
-
-  // Translated abstract of the thesis, in English
-  abstract-en: highlight(lorem(200)),
-
-  // The national thesis number (NNT, Numéro National de Thèse)
-  NNT: highlight[XXXXXXXXXX],
+  abstract: highlight(lorem(200)),
 
   // The line for the doctoral school number and name
-  doctoral-school: [École doctorale n°#missing-field(width: 3em) : #missing-field()],
-
-  // The short code of the doctoral school. See images filename in ./img/
-  doctoral-school-code: none,
+  diploma: [Département #missing-field()],
 
   // The line for the specialty
-  specialty: [Spécialité de doctorat : #missing-field()],
+  specialty: [],
 
   // The line for the graduate school
-  graduate-school: [Graduate School : #missing-field()],
-
-  // The line for the university component / associated university (référent)
-  university-component: [Référent : #missing-field()],
-
-  // The paragraph for the research unit and the PhD advisors
-  research-unit-and-advisors: [
-    Thèse préparée dans l'unité de recherche #missing-field(),\ sous la direction de #missing-field(), #highlight[titre du directeur de thèse],\ 
-    et l'encadrement de #missing-field(), #highlight[titre du co-endadrant].
-  ],
+  level: [#missing-field() année],
 
   // The date of the PhD defense
   defense-date: [#missing-field()],
@@ -140,35 +148,12 @@
         width: 100%,// 100% of rectangle_width,
         height: 100%
       )
-
-      #place(
-        bottom+left,
-        dx: 0.1cm,
-        dy: -3cm,
-        rotate(
-          -90deg,
-          block[
-            #text(
-              fill: white,
-              size: 16pt,
-            )[
-              THESE~DE~DOCTORAT
-            ]
-            #v(0.5pt)
-            #text(
-              fill: white,
-            )[
-              NNT~:~#NNT
-            ]
-          ]
-        )
-      )
     ],
     [ // right part of the grid
 
       #v(vertical-spacing-1)
 
-      #image("img/universite-paris-saclay.png", width: 25.4%*21cm)
+      #image("img/iut-orsay.svg", width: 50%*21cm)
 
       #v(vertical-spacing-2)
 
@@ -177,7 +162,7 @@
           size: 20pt,
           fill: prune,
         )[
-          #title-fr
+          #title
         ]\
         #v(2pt)
         #text(
@@ -185,7 +170,7 @@
           fill: black,
           style: "italic"
         )[
-          #title-en
+          #subtitle
         ]\
 
         #v(vertical-spacing-3)
@@ -194,18 +179,12 @@
           size: 13pt,
           weight: 400,
         )[
-          *Thèse de doctorat de l’université Paris-Saclay*
+          #if specialty != none [*#diploma --- #specialty*] else [*#diploma*]\
         ]
-        #v(10pt)
         #text(
           size: 12pt,
         )[
-          #doctoral-school\
-          #specialty\
-          #graduate-school\ 
-          #university-component
-          #v(10pt)
-          #research-unit-and-advisors
+          #level
         ]
 
         #v(vertical-spacing-4)
@@ -213,7 +192,7 @@
         #text(
           size: 11pt,
         )[
-          *Thèse soutenue à Paris-Saclay, le #defense-date, par* \
+          *Rapport rédigé le #defense-date, par* \
         ]
 
         #text(
@@ -221,11 +200,11 @@
           fill: prune,
           weight: 600,
         )[
-          #candidate-name
+          #student-name
         ]
       ]
 
-      #v(vertical-spacing-5)
+      #v(1fr)
 
       #grid(
         columns: (horizontal-spacing-1, auto),
@@ -233,8 +212,7 @@
         stroke: (x,y) => if x == 1 and y == 1 { (left: (1pt + prune)) },
         [],
         [
-          #text(size: 14pt, fill: prune)[*Composition du jury*]\
-          #text(size: 11pt, fill: prune)[Membres du jury avec voix délibérative]
+          #text(size: 14pt, fill: prune)[*Encadrement*]
         ],
         [],
         [
@@ -253,6 +231,8 @@
           )
         ],
       )
+
+      #v(vertical-spacing-5)
     ]
   ) // end grid
 
@@ -263,45 +243,27 @@
 
   pagebreak()
 
-  if doctoral-school-code == none {
-    missing-doctoral-school-logo
-  }
-  else {
-    assert(type(doctoral-school-code) == str)
-    image("img/" + doctoral-school-code + ".png", width: 60%)
-  }
+  image("img/iut-orsay.svg", width: 60%)
 
   v(10pt)
 
   grid(
     columns: (100%),
-    rows: 2,
+    rows: 1,
     gutter: 40pt,
     inset: 10pt,
     stroke: 1pt+prune,
     [
       #set text(10pt)
-      *Titre :* #title-fr\
-      *Mots-clés :* #for keyword in keywords-fr {
+      *Titre :* #title\
+      *Mots-clés :* #for keyword in keywords {
         (keyword)
-        if keyword != keywords-fr.last() {
+        if keyword != keywords.last() {
           (", ")
         }
       }\
       #v(5pt)
-      *Résumé :* #abstract-fr
-    ],
-    [
-      #set text(10pt)
-      *Title :* #title-en\
-      *Keywords :* #for keyword in keywords-en {
-        (keyword)
-        if keyword != keywords-en.last() {
-          (", ")
-        }
-      }\
-      #v(5pt)
-      *Abstract :* #abstract-en
+      *Résumé :* #abstract
     ]
   )
 

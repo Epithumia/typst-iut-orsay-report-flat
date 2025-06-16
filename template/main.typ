@@ -1,4 +1,4 @@
-#import "@preview/paris-saclay-thesis-flat:1.0.2": paris-saclay-thesis, prune
+#import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report, prune, summary, table-list, figure-list, lexicon
 
 ///////////////////////////////////////////
 // 1/3 If not already done, download the
@@ -13,24 +13,15 @@
 //     ones are still missing.
 /////////////////////////////////////////// 
 
-#show: paris-saclay-thesis.with(
-  candidate-name: [Frodon Sacquet],
-  title-fr: [Propriétés et conséquences psychiques, magiques et géopoliques du métal Au lorsque forgé en Anneau Unique],
-  title-en: [Properties and psychic, magical and geopolitical consequences of Au metal when forged into the One Ring],
-  keywords-fr: ("Or", "montagne du Destin", "Magie occulte"),
-  keywords-en: ("Gold","Mount Doom", "Occult magic"),
-  abstract-fr: lorem(200),
-  abstract-en: lorem(200),
-  NNT: [1955UPASX000],
-  doctoral-school: [École doctorale n°573 : INTERFACES - approches interdisciplinaires,\ fondements, applications et innovation],
-  doctoral-school-code: "INTERFACES", // for the logo to insert
-  specialty: [Spécialité de doctorat : Sciences des matériaux],
-  graduate-school: [Graduate School : Physique],
-  university-component: [Référent : Faculté des sciences d'Orsay],
-  research-unit-and-advisors: [
-    Thèse préparée dans l'unité de recherche *Fondcombe*,\ sous la direction d'*Elrond*, seigneur de Fondcombe,\ 
-    et l'encadrement de *Gandalf*, magicien de l'ordre des Istari.
-  ],
+#show: iut-orsay-report.with(
+  student-name: [Frodon Sacquet],
+  title: [Propriétés et conséquences psychiques, magiques et géopoliques du métal Au lorsque forgé en Anneau Unique],
+  subtitle: [Properties and psychic, magical and geopolitical consequences of Au metal when forged into the One Ring],
+  keywords: ("Or", "montagne du Destin", "Magie occulte"),
+  abstract: lorem(200),
+  diploma: [BUT Informatique],
+  specialty: [Parcours C : gestion et exploitation des données],
+  level: [Première année],
   defense-date: [20 octobre 1955],
   thesis-examiners: (
     (
@@ -195,37 +186,6 @@
   ] 
 }
 
-// "En résumé" & "Publications et communications scientifiques" boxes
-
-#import "@preview/colorful-boxes:1.4.1": colorbox
-
-#let en_résumé(body) = {
-  colorbox(
-    title: text(font: "Segoe UI This")[En résumé],
-    radius: 2pt,
-    width: auto,
-    color: "default"
-  )[
-    #body
-    #v(2pt)
-  ]
-}
-
-#let publications(body) = {
-  colorbox(
-    title: text(font: "Segoe UI This")[Publications et communications scientifiques],
-    radius: 2pt,
-    width: auto,
-    box-colors: (
-      prune: (stroke: prune, fill: white, title: white),
-    ),
-    color: "prune"
-  )[
-    #body
-    #v(2pt)
-  ]
-}
-
 // Display the outline
 
 #outline(
@@ -234,21 +194,15 @@
 )
 
 ///////////////////////////////////////////
-// Write your thesis below. Bon courage !
+// Write your report below. Bon courage !
 ///////////////////////////////////////////
 
 = Chapitre <ch:chapitre>
 
 #lorem(50)
 
-#en_résumé[
+#summary[
   #lorem(25)
-]
-
-#publications[
-  - #lorem(12)
-  - #lorem(12)
-  - #lorem(12)
 ]
 
 == Sous-chapitre <ch:sous-chapitre>
@@ -264,5 +218,29 @@
 ]
 
 #lorem(50)
+
+#figure(
+  table(
+    columns: (auto, 1fr, 1fr, 1fr),
+    [t], [1], [2], [3],
+    [y], [0.3s], [0.4s], [0.8s],
+  ),
+  caption: [Timing results],
+)
+
+
+#table-list()
+
+#figure-list()
+
+#lexicon(
+  [
+    / Ligature: A merged glyph.
+    / Kerning: A spacing adjustment between two adjacent letters.
+  ]
+)
+
+//= Liste des tables <unnumbered>
+//#outline(target: figure.where(kind: table), title: none)
 
 #bibliography("bib.yml", title: [Bibliographie])

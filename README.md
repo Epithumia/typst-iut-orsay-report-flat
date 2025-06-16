@@ -46,20 +46,14 @@ In the web app, [project fonts are automatically discovered](https://typst.app/d
 ## Configuration
 
 This template exports the `paris-saclay-thesis` function with the following named arguments:
-- `candidate-name`: Name of the PhD candidate [type: content]
-- `title-fr`: Thesis title in French [content]
-- `title-en`: Translated thesis title, in English [content]
-- `keywords-fr`: Keywords of the thesis subject, in French [strings array]
-- `keywords-en`: Translated keywords of the thesis subject, in English [strings array]
-- `abstract-fr`: Abstract of the thesis, in French [content]
-- `abstract-en`: Translated abstract of the thesis, in English [content]
-- `NNT`: National thesis number [content]
-- `doctoral-school`: Line mentioning the doctoral school [content]
-- `doctoral-school-code`: Short code of the doctoral school (usually the acronym) to fetch the right logo [string]
+- `student-name`: Name of the PhD candidate [type: content]
+- `title`: Report title [content]
+- `subtitle`: Sub-title [content]
+- `keywords`: Keywords of the report subject [strings array]
+- `abstract`: Abstract of the thesis, in French [content]
+- `diploma`: Line mentioning the doctoral school [content]
 - `specialty`: Line mentioning the specialty [content]
-- `graduate-school`: Line mentioning the graduate school [content]
-- `university-component`: Line mentioning the university component ("référent") [content]
-- `research-unit-and-advisors`: Paragraph mentioning the research unit and the PhD advisors [content]
+- `level`: Line mentioning the graduate school [content]
 - `defense-date`: Date of the PhD defense [content]
 - `thesis-examiners`: List of thesis examiners [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
 
@@ -71,23 +65,14 @@ The template will initialize your package with a sample call to the `paris-sacla
 #import "@preview/paris-saclay-thesis-flat:1.0.2": paris-saclay-thesis
 
 #show: paris-saclay-thesis.with(
-  candidate-name: [Frodon Sacquet],
-  title-fr: [Propriétés et conséquences psychiques, magiques et géopoliques du métal Au lorsque forgé en Anneau Unique],
-  title-en: [Properties and psychic, magical and geopolitical consequences of Au metal when forged into the One Ring],
-  keywords-fr: ("Or", "montagne du Destin", "Magie occulte"),
-  keywords-en: ("Gold","Mount Doom", "Occult magic"),
-  abstract-fr: lorem(200),
-  abstract-en: lorem(200),
-  NNT: [1955UPASX000],
-  doctoral-school: [École doctorale n°573 : INTERFACES - approches interdisciplinaires,\ fondements, applications et innovation],
-  doctoral-school-code: "INTERFACES",
+  student-name: [Frodon Sacquet],
+  title: [Propriétés et conséquences psychiques, magiques et géopoliques du métal Au lorsque forgé en Anneau Unique],
+  subtitle: [Properties and psychic, magical and geopolitical consequences of Au metal when forged into the One Ring],
+  keywords: ("Or", "montagne du Destin", "Magie occulte"),
+  abstract: lorem(200),
+  department: [Département Informatique],
   specialty: [Spécialité de doctorat : Sciences des matériaux],
-  graduate-school: [Graduate School : Physique],
-  university-component: [Référent : Faculté des sciences d'Orsay],
-  research-unit-and-advisors: [
-    Thèse préparée dans l'unité de recherche *Fondcombe*,\ sous la direction d'*Elrond*, seigneur de Fondcombe,\ 
-    et l'encadrement de *Gandalf*, magicien de l'ordre des Istari.
-  ],
+  level: [Graduate School : Physique],
   defense-date: [20 octobre 1955],
   thesis-examiners: (
     (

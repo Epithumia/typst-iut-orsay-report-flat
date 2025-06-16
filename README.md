@@ -46,54 +46,50 @@ In the web app, [project fonts are automatically discovered](https://typst.app/d
 ## Configuration
 
 This template exports the `paris-saclay-thesis` function with the following named arguments:
+
 - `student-name`: Name of the PhD candidate [type: content]
 - `title`: Report title [content]
 - `subtitle`: Sub-title [content]
 - `keywords`: Keywords of the report subject [strings array]
-- `abstract`: Abstract of the thesis, in French [content]
-- `diploma`: Line mentioning the doctoral school [content]
+- `abstract`: Abstract of the report [content]
+- `diploma`: Line mentioning the diploma this report is for [content]
 - `specialty`: Line mentioning the specialty [content]
-- `level`: Line mentioning the graduate school [content]
+- `level`: Line mentioning the diploma level (e.g. first year, second year...) [content]
 - `report-date`: Date of the report [content]
 - `thesis-examiners`: List of thesis examiners [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
 
 Some spacings are adjustable, see [`src/lib.typ`](src/lib.typ) for the complete list of arguments.
 
-The template will initialize your package with a sample call to the `paris-saclay-thesis` function in a show rule. If you want to change an existing project to use this template, you can add a show rule like this at the top of your file:
+The template will initialize your package with a sample call to the `iut-orsay-report` function in a show rule. If you want to change an existing project to use this template, you can add a show rule like this at the top of your file:
 
 ```typst
-#import "@preview/paris-saclay-thesis-flat:1.0.2": paris-saclay-thesis
+#import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report
 
 #show: paris-saclay-thesis.with(
-  student-name: [Frodon Sacquet],
-  title: [Propriétés et conséquences psychiques, magiques et géopoliques du métal Au lorsque forgé en Anneau Unique],
-  subtitle: [Properties and psychic, magical and geopolitical consequences of Au metal when forged into the One Ring],
-  keywords: ("Or", "montagne du Destin", "Magie occulte"),
+  student-name: [Tiphaine Patraque],
+  title: [Rapport d'apprentissage],
+  subtitle: [Cercle des sorcières du Disque-monde],
+  keywords: ("Causse", "sorcellerie", "magie occulte"),
   abstract: lorem(200),
-  department: [Département Informatique],
-  specialty: [Spécialité de doctorat : Sciences des matériaux],
-  level: [Graduate School : Physique],
-  defense-date: [20 octobre 1955],
+  diploma: [BUT Sorcellerie],
+  specialty: [Parcours A : magie des miroirs],
+  level: [Troisième année],
+  report-date: [20 octobre 1955],
   thesis-examiners: (
     (
-      name: [*Aragorn*],
-      title: [Roi du Gondor],
-      status: [Président]
+      name: [*Esmé Ciredutemps*],
+      title: [Sorcière],
+      status: [Maîtresse d'apprentissage]
     ),
     (
-      name: [*Legolas*],
-      title: [Prince des Elfes Sylvains],
-      status: [Rapporteur &\ Examinateur]
+      name: [*Perspicacia Tique*],
+      title: [Sorcière],
+      status: [Tutrice]
     ),
     (
-      name: [*Gimli*],
-      title: [Guerrier du royaume d'Erebor],
-      status: [Rapporteur &\ Examinateur]
-    ),
-    (
-      name: [*Faramir*],
-      title: [Intendant du Gondor],
-      status: [Examinateur]
+      name: [*Nac mac Feegle*],
+      title: [Fées],
+      status: [Tuteurs]
     ),
   ),
 )

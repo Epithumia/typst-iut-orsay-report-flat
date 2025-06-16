@@ -32,7 +32,7 @@ typst init @preview/paris-saclay-thesis-flat
 cd paris-saclay-thesis-flat
 ```
 
-Then download the _Segoe UI This_ font, e.g. from [here](https://font.download/font/segoe-ui-this), and place the .ttf files e.g. in a `fonts/` subfolder.
+Then download the _Open Sans_ font, e.g. from [here](https://fonts.google.com/specimen/Open+Sans), and place the .ttf files e.g. in a `fonts/` subfolder.
 
 If you use the CLI, you must tell the binary where to look for additional fonts with the `--font-path` argument:
 ```bash
@@ -54,7 +54,7 @@ This template exports the `paris-saclay-thesis` function with the following name
 - `diploma`: Line mentioning the doctoral school [content]
 - `specialty`: Line mentioning the specialty [content]
 - `level`: Line mentioning the graduate school [content]
-- `defense-date`: Date of the PhD defense [content]
+- `report-date`: Date of the report [content]
 - `thesis-examiners`: List of thesis examiners [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
 
 Some spacings are adjustable, see [`src/lib.typ`](src/lib.typ) for the complete list of arguments.

@@ -16,7 +16,7 @@
 // A box to have a small summary for a section/sub-section
 #let summary(body) = {
   colorbox(
-    title: text(font: "Segoe UI This")[En résumé],
+    title: text(font: "Open Sans")[En résumé],
     radius: 2pt,
     width: auto,
     box-colors: (
@@ -52,6 +52,14 @@
   (content)
 }
 
+// A "Remarque : " text box
+
+#let remark(number: none, body) = {
+  block(stroke: (left: 1pt), inset: 0.5em)[
+    #smallcaps[Remarque #number :] #body
+  ] 
+}
+
 // The function takes the whole document as `body` parameter
 // and formats it for a Paris-Saclay University thesis
 #let iut-orsay-report(
@@ -81,7 +89,7 @@
   level: [#missing-field() année],
 
   // The date of the PhD defense
-  defense-date: [#missing-field()],
+  report-date: [#missing-field()],
 
   // The list of thesis examiners (rapporteurs and defense examiners)
   thesis-examiners: (
@@ -132,7 +140,7 @@
   )
 
   set text(
-    font: ("Segoe UI This"),
+    font: ("Open Sans"),
     size: 12pt,
     lang: "fr"
   )
@@ -192,7 +200,7 @@
         #text(
           size: 11pt,
         )[
-          *Rapport rédigé le #defense-date, par* \
+          *Rapport rédigé le #report-date, par* \
         ]
 
         #text(

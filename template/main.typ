@@ -1,8 +1,8 @@
-#import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report, prune, summary, table-list, figure-list, lexicon
+#import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report, prune, summary, table-list, figure-list, lexicon, remark
 
 ///////////////////////////////////////////
 // 1/3 If not already done, download the
-//     "Segoe UI This" font (see README)
+//     "Open Sans" font (see README)
 /////////////////////////////////////////// 
 
 ///////////////////////////////////////////
@@ -14,35 +14,30 @@
 /////////////////////////////////////////// 
 
 #show: iut-orsay-report.with(
-  student-name: [Frodon Sacquet],
-  title: [Propriétés et conséquences psychiques, magiques et géopoliques du métal Au lorsque forgé en Anneau Unique],
-  subtitle: [Properties and psychic, magical and geopolitical consequences of Au metal when forged into the One Ring],
-  keywords: ("Or", "montagne du Destin", "Magie occulte"),
+  student-name: [Tiphaine Patraque],
+  title: [Rapport d'apprentissage],
+  subtitle: [Cercle des sorcières du Disque-monde],
+  keywords: ("Causse", "sorcellerie", "magie occulte"),
   abstract: lorem(200),
-  diploma: [BUT Informatique],
-  specialty: [Parcours C : gestion et exploitation des données],
-  level: [Première année],
-  defense-date: [20 octobre 1955],
+  diploma: [BUT Sorcellerie],
+  specialty: [Parcours A : magie des miroirs],
+  level: [Troisième année],
+  report-date: [20 octobre 1955],
   thesis-examiners: (
     (
-      name: [*Aragorn*],
-      title: [Roi du Gondor],
-      status: [Président]
+      name: [*Esmé Ciredutemps*],
+      title: [Sorcière],
+      status: [Maîtresse d'apprentissage]
     ),
     (
-      name: [*Legolas*],
-      title: [Prince des Elfes Sylvains],
-      status: [Rapporteur &\ Examinateur]
+      name: [*Perspicacia Tique*],
+      title: [Sorcière],
+      status: [Tutrice]
     ),
     (
-      name: [*Gimli*],
-      title: [Guerrier du royaume d'Erebor],
-      status: [Rapporteur &\ Examinateur]
-    ),
-    (
-      name: [*Faramir*],
-      title: [Intendant du Gondor],
-      status: [Examinateur]
+      name: [*Nac mac Feegle*],
+      title: [Fées],
+      status: [Tuteurs]
     ),
   ),
   // You can also adjust spacings in the first page with
@@ -108,7 +103,7 @@
   set text(
     size: heading_text_size.at(1),
     fill: prune,
-    font: "Segoe UI This",
+    font: "Open Sans",
     weight: "bold"
   )
   let number = context counter(heading).display("1 • ") // prefix format
@@ -122,7 +117,7 @@
 #show heading.where(level: 2): header => {
   set text(
     size: heading_text_size.at(2),
-    font: "Segoe UI This",
+    font: "Open Sans",
     weight: "bold"
   )
   v(heading_text_size.at(2)) // same height spacing as the font size
@@ -135,7 +130,7 @@
 #show heading.where(level: 3): header => {
   set text(
     size: heading_text_size.at(3),
-    font: "Segoe UI This",
+    font: "Open Sans",
     weight: "bold"
   )
   v(heading_text_size.at(3)) // same height spacing as the font size
@@ -178,13 +173,7 @@
   linebreaks: "optimized"
 )
 
-// A "Remarque : " text box
 
-#let remarque(number: none, body) = {
-  block(stroke: (left: 1pt), inset: 0.5em)[
-    #smallcaps[Remarque #number :] #body
-  ] 
-}
 
 // Display the outline
 
@@ -213,9 +202,13 @@
 
 #lorem(50) @bib:concerning-hobbits
 
-#remarque[
+#remark[
   #lorem(25)
 ]
+
+#remark(number:1,
+  [On peut aussi numéroter les remarques.]
+)
 
 #lorem(50)
 
@@ -239,8 +232,5 @@
     / Kerning: A spacing adjustment between two adjacent letters.
   ]
 )
-
-//= Liste des tables <unnumbered>
-//#outline(target: figure.where(kind: table), title: none)
 
 #bibliography("bib.yml", title: [Bibliographie])

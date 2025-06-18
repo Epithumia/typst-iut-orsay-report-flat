@@ -61,7 +61,7 @@
 }
 
 // The function takes the whole document as `body` parameter
-// and formats it for a Paris-Saclay University thesis
+// and formats it for a IUT Orsay report
 #let iut-orsay-report(
 
   // The first and last names of the candidate

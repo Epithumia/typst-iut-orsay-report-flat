@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 1. Update the version number in [`typst.toml`](./typst.toml)
 1. Package locally under the `@preview` prefix with `just install-preview`
 1. Update the `#import` line of [`template/main.typ`](template/main.typ) to target the new version
-1. Check that everything works (except the font) when starting a new project from this template with `typst init @preview/paris-saclay-thesis-flat:<version>`
+1. Check that everything works (except the font) when starting a new project from this template with `typst init @preview/iut-orsay-report-flat:<version>`
 1. Here in the CHANGELOG, add a new heading after [Unreleased] with the new version number.
    Link this heading to `https://github.com/Epithumia/typst-iut-orsay-report-flat/releases/tag/<version-tag>`
 1. Update the version number in the [`README.md`](./README.md) "Configuration" section

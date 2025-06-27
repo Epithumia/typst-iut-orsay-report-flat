@@ -22,7 +22,7 @@
   diploma: [BUT Sorcellerie],
   specialty: [Parcours A : magie des miroirs],
   level: [Troisième année],
-  report-date: [20 octobre 1955],
+  report-date: [27 août 2015],
   thesis-examiners: (
     (
       name: [*Esmé Ciredutemps*],
@@ -200,7 +200,7 @@
 
 === Sous-sous-chapitre <ch:sous-sous-chapitre>
 
-#lorem(50) @bib:concerning-hobbits
+#lorem(50) @bib:what-i-did-holidays
 
 #remark[
   #lorem(25)

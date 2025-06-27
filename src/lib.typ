@@ -91,6 +91,10 @@
   // The date of the PhD defense
   report-date: [#missing-field()],
 
+  // Training/Alternance
+  company-name:[],
+  company-logo:"img/empty.png",
+
   // The list of thesis examiners (rapporteurs and defense examiners)
   thesis-examiners: (
     (
@@ -195,8 +199,6 @@
           #level
         ]
 
-        #v(vertical-spacing-4)
-
         #text(
           size: 11pt,
         )[
@@ -211,6 +213,23 @@
           #student-name
         ]
       ]
+
+      #v(vertical-spacing-4)
+
+      #align(center)[
+      
+        #text(
+          size: 12pt,
+        )[
+          #company-name
+        ]
+
+        #image(company-logo, width: 100%, height: 25%, fit: "contain")
+      
+      ]
+      
+
+      #v(vertical-spacing-4)
 
       #v(1fr)
 

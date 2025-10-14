@@ -77,6 +77,7 @@ The template will initialize your package with a sample call to the `iut-orsay-r
   specialty: [Parcours A : magie des miroirs],
   level: [Troisième année],
   report-date: [20 octobre 1955],
+  company-name: [Cercle des Sorcières],
   thesis-examiners: (
     (
       name: [*Esmé Ciredutemps*],

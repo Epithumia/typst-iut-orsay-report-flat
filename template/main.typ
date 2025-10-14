@@ -23,6 +23,7 @@
   specialty: [Parcours A : magie des miroirs],
   level: [Troisième année],
   report-date: [27 août 2015],
+  company-name: [Cercle des Sorcières],
   thesis-examiners: (
     (
       name: [*Esmé Ciredutemps*],

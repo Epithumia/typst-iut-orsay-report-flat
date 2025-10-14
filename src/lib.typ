@@ -91,6 +91,9 @@
   // The date of the PhD defense
   report-date: [#missing-field()],
 
+  // Report type
+  report-type: [],
+
   // Training/Alternance
   company-name:[],
   company-logo:"img/empty.png",
@@ -217,7 +220,16 @@
       #v(vertical-spacing-4)
 
       #align(center)[
-      
+        #text(
+          size: 12pt
+          )[
+            #if report-type == [stage] [
+              Stage effectué au sein de :
+            ] else if report-type == [apprentissage]  [
+              Apprentissage effectué au sein de :
+            ]
+          ]
+        
         #text(
           size: 12pt,
         )[

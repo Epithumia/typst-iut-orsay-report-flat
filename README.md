@@ -6,7 +6,7 @@ An unofficial, flat-design Typst template for IUT Orsay (part of Paris-Saclay Un
 
 <p align="center">
 <img src="https://github.com/Epithumia/typst-iut-orsay-report-flat/blob/main/thumbnails/p1.png?raw=true" alt="page 1 of an example thesis based on this template" width="49%">
-<img src="https://github.com/sebmestrallet/typst-iut-orsay-report-flat/blob/main/thumbnails/p2.png?raw=true" alt="page 2 of an example thesis based on this template" width="49%">
+<img src="https://github.com/Epithumia/typst-iut-orsay-report-flat/blob/main/thumbnails/p2.png?raw=true" alt="page 2 of an example thesis based on this template" width="49%">
 </p>
 
 <details>

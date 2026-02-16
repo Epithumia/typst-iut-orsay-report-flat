@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
    Link this heading to `https://github.com/Epithumia/typst-iut-orsay-report-flat/releases/tag/<version-tag>`
 1. Update the version number in the [`README.md`](./README.md) "Configuration" section
 1. Update the version number in [`CITATION.cff`](./CITATION.cff)
-1. Commit, tag and push, to trigger the GitHub Action creating a branch in [`sebmestrallet/typst-packages`](https://github.com/sebmestrallet/typst-packages), from which a PR can be created against [`typst/packages`](https://github.com/typst/packages/)
+1. Commit, tag and push, to trigger the GitHub Action creating a branch in [`epithumia/typst-packages`](https://github.com/epithumia/typst-packages), from which a PR can be created against [`typst/packages`](https://github.com/typst/packages/)
 
 </details>
 

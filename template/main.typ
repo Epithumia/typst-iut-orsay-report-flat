@@ -1,193 +1,117 @@
-#import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report, prune, summary, table-list, figure-list, lexicon, remark
+#import "@local/iut-orsay-report-flat:1.0.0": figure-list, iut-orsay-report, lexicon, prune, remark, summary, table-list
+#import "@preview/nth:1.0.1": *
+///////////////////////////////////////////
+// 1/3 Si nécessaire, télécharger la police
+//     "Open Sans" (cf. README)
+///////////////////////////////////////////
 
 ///////////////////////////////////////////
-// 1/3 If not already done, download the
-//     "Open Sans" font (see README)
-/////////////////////////////////////////// 
-
+// 2/3 Modifier les paramètres ci-dessous
+//     pour modifier les deux premières pages.
+//     La plupart des paramètres ont des valeurs
+//     par défaut, et les champs manquants
+//     seront mis en surbrillance.
 ///////////////////////////////////////////
-// 2/3 Change the value of the following
-//     parameters to edit the first two pages.
-//     All parameters have a default value, so
-//     you can remove some to highlight which
-//     ones are still missing.
-/////////////////////////////////////////// 
 
 #show: iut-orsay-report.with(
-  student-name: [Tiphaine Patraque],
-  title: [Rapport de projet S601],
+  student-names: (
+    (
+      last_name: [Patraque],
+      first_name: [Typhaine],
+    ),
+    (
+      last_name: [Hawkins],
+      first_name: [Anagramma],
+    ),
+    // Mettre les autres étudiants
+    // (rapport de groupe par exemple)
+    // En suivant le même format
+    // ATTENTION : s'il y a un seul nom,
+    // il faut terminer par une virgule
+  ),
+  students-in-headers: false,
+  title: [Rapport d'apprentissage],
   subtitle: [Têtologie],
   keywords: ("Causse", "sorcellerie", "magie occulte", "têtologie"),
   abstract: lorem(200),
+  show-abstract: true, // true par défaut, false permet de masque la page de résumé
   diploma: [BUT Sorcellerie],
   specialty: [Parcours A : magie des miroirs],
   level: [Troisième année],
-  report-date: [27 août 2015],
+  report-date: [16 février 2026],
+  report-type: [apprentissage], // [stage] ou [apprentissage] ou ignorer
   company-name: [Cercle des Sorcières],
-  thesis-examiners: (
+  report-examiners: (
     (
       name: [*Esmé Ciredutemps*],
       title: [Sorcière],
-      status: [Maîtresse d'apprentissage]
+      status: [Maîtresse d'apprentissage],
     ),
     (
       name: [*Perspicacia Tique*],
       title: [Sorcière],
-      status: [Tutrice]
+      status: [Tutrice],
     ),
     (
       name: [*Nac mac Feegle*],
       title: [Fées],
-      status: [Tuteurs]
+      status: [Tuteurs],
     ),
   ),
-  // You can also adjust spacings in the first page with
-  // `vertical-spacing-1` to `vertical-spacing-5`
-  // and `horizontal-spacing-1` to `horizontal-spacing-2`
+  // Les espacements sur ces deux pages peuvent être
+  // ajustés en modifiant les valeurs de
+  // `vertical-spacing-1` à `vertical-spacing-5`
+  // et `horizontal-spacing-1` à `horizontal-spacing-2`
 )
 
 ///////////////////////////////////////////
-// 3/3 Starting from here, the third page,
-//     no formatting is imposed.
-//     However here are some tweaks you
-//     might like.
+// 3/3 A partir d'ici, il n'y a plus de
+//     formatage imposé.
+//     Les modifications ci-dessous sont
+//     proposées à titre indicatif.
 ///////////////////////////////////////////
 
-// Switch to a serif font family, size 11
-
-#set text(
-  font: "Libertinus Serif",
-  size: 11pt
-)
-
-// Show links in blue
-
-#show link: set text(fill: blue)
-
-// Show numbers in references (to a bibliography entry, a section, a figure) in blue
-// thanks Eric Biedert https://github.com/typst/typst/discussions/4143
+// Affiche les références (bibliographie, section, figure...)
+// en prune
+// Cf. Eric Biedert https://github.com/typst/typst/discussions/4143
 
 #show cite: it => {
-  // reference to a bibliography entry -> color only the number, not square brackets, not the potential supplement
-  show regex("\[",): set text(fill: black) // enforce square brackets in black
-  show regex("^\[(\d+)",): set text(fill: blue) // only the first number, in case there is a number in the supplement
+  // Bibliographie -> couleur pour le nombre uniquement, pas les crochets ou le texte supplémentaire
+  show regex("\["): set text(fill: black) // crochets noirs
+  show regex("^\[(\d+)"): set text(fill: prune) // uniquement le premier nombre, pas les nombres qui seraient dans le supplement
   it
 }
 #show ref: it => {
   if it.element == none {
-    // reference to a bibliography entry -> manage by `#show cite` above
+    // Référence vers une entrée de bibliographie -> `#show cite` précédent
     return it
   }
-  // reference to a section or a figure
-  show regex("[\d]+[\.]?[\d]*[\.]?[\d]*"): set text(fill: blue) // find something like "1", "1.2" or "1.3"
+  // Référence vers une section ou figure
+  show regex("[\d]+[\.]?[\d]*[\.]?[\d]*"): set text(fill: prune) // recherche le motif "1", "1.2" ou "1.3"...
   it
 }
 
-// Figure legends in italic and with smaller font size
+// Légende de figure en italique et taille de police réduite
 
 #show figure.caption: it => [
   #text(size: 10pt, style: "italic")[#it]
 ]
 
-// Headings numbering & refer to a section with "Chapitre X" instead of "Section X"
-
-#set heading(numbering: "1.1", supplement: "Chapitre")
-
-// Refer to an equation with "Équation X" instead of "Equation X"
-
-#set math.equation(supplement: "Équation")
-
-// Headings formatting
-
-#let heading_text_size = (none, 18pt, 15pt, 12pt, 11pt) // for each heading level
-#show heading.where(level: 1): header => {
-  set text(
-    size: heading_text_size.at(1),
-    fill: prune,
-    font: "Open Sans",
-    weight: "bold"
-  )
-  let number = context counter(heading).display("1 • ") // prefix format
-  pagebreak(weak: true) // start level 1 headings on a new page
-  block(breakable: false)[
-    #if header.numbering != none [ #number ]
-    #upper(header.body)
-  ]
-  v(heading_text_size.at(1)) // same height spacing as the font size
-}
-#show heading.where(level: 2): header => {
-  set text(
-    size: heading_text_size.at(2),
-    font: "Open Sans",
-    weight: "bold"
-  )
-  v(heading_text_size.at(2)) // same height spacing as the font size
-  box()[
-    #counter(heading).display()~
-    #upper(header.body)
-  ]
-  v(heading_text_size.at(2)) // same height spacing as the font size
-}
-#show heading.where(level: 3): header => {
-  set text(
-    size: heading_text_size.at(3),
-    font: "Open Sans",
-    weight: "bold"
-  )
-  v(heading_text_size.at(3)) // same height spacing as the font size
-  box()[
-    #h(10pt) // small indent
-    #counter(heading).display()~
-    #header.body
-  ]
-  v(heading_text_size.at(3)) // same height spacing as the font size
-}
-
-// Headings formatting in the outline
-
-#show outline.entry.where(level: 1): it => {
-  v(12pt, weak: true) // small spacing before
-  strong(it) // in bold
-}
-#show outline.entry.where(level: 3): it => {
-  text(size: 10pt)[#it] // slightly smaller
-}
-
-// Footer with the page number
-
-#set page(footer: context [
-    #set align(center)
-    #text(
-      fill: black,
-      size: 12pt,
-      weight: "regular"
-    )[
-      #counter(page).display("1")
-    ]
-  ]
-)
-
-// Text justification
+// Justification du texte
 
 #set par(
+  linebreaks: "optimized",
   justify: true,
-  linebreaks: "optimized"
 )
 
+//////////////////////////////////////////////////
+// Rédiger le rapport ci-dessous. Bon courage ! //
+//////////////////////////////////////////////////
 
+// Plan
+#outline()
 
-// Display the outline
-
-#outline(
-  title: [Table des matières],
-  indent: 1em
-)
-
-///////////////////////////////////////////
-// Write your report below. Bon courage !
-///////////////////////////////////////////
-
-= Chapitre <ch:chapitre>
+= Partie <p:partie>
 
 #lorem(50)
 
@@ -195,11 +119,11 @@
   #lorem(25)
 ]
 
-== Sous-chapitre <ch:sous-chapitre>
+== Sous-partie <p:sous-partie>
 
 #lorem(25)
 
-=== Sous-sous-chapitre <ch:sous-sous-chapitre>
+=== Sous-sous-partie <ch:sous-sous-partie>
 
 #lorem(50) @bib:what-i-did-holidays
 
@@ -207,9 +131,7 @@
   #lorem(25)
 ]
 
-#remark(number:1,
-  [On peut aussi numéroter les remarques.]
-)
+#remark(number: 1, [On peut aussi numéroter les remarques.])
 
 #lorem(50)
 
@@ -219,9 +141,8 @@
     [t], [1], [2], [3],
     [y], [0.3s], [0.4s], [0.8s],
   ),
-  caption: [Timing results],
+  caption: [Mesures de temps],
 )
-
 
 #table-list()
 
@@ -231,7 +152,7 @@
   [
     / Ligature: A merged glyph.
     / Kerning: A spacing adjustment between two adjacent letters.
-  ]
+  ],
 )
 
 #bibliography("bib.yml", title: [Bibliographie])

@@ -1,5 +1,5 @@
 #import "@local/iut-orsay-report-flat:1.0.0": figure-list, iut-orsay-report, lexicon, prune, remark, summary, table-list
-#import "@preview/nth:1.0.1": *
+
 ///////////////////////////////////////////
 // 1/3 Si nécessaire, télécharger la police
 //     "Open Sans" (cf. README)
@@ -29,7 +29,7 @@
     // ATTENTION : s'il y a un seul nom,
     // il faut terminer par une virgule
   ),
-  students-in-headers: false,
+  students-in-headers: false, // par défaut : true
   title: [Rapport d'apprentissage],
   subtitle: [Têtologie],
   keywords: ("Causse", "sorcellerie", "magie occulte", "têtologie"),
@@ -143,6 +143,13 @@
   ),
   caption: [Mesures de temps],
 )
+
+#figure(numbering: "1")[
+  ```py
+  def my_func():
+    print("Hello World")
+  ```
+]
 
 #table-list()
 

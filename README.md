@@ -33,7 +33,7 @@ typst init @preview/iut-orsay-report-flat
 cd iut-orsay-report-flat
 ```
 
-Then download the _Open Sans_ font, e.g. from [here](https://fonts.google.com/specimen/Open+Sans), and place the .ttf files e.g. in a `fonts/` subfolder.
+Then download the _Open Sans_ font, e.g. from [fonts.google.com](https://fonts.google.com/specimen/Open+Sans), and place the .ttf files e.g. in a `fonts/` subfolder.
 
 If you use the CLI, you must tell the binary where to look for additional fonts with the `--font-path` argument:
 
@@ -49,7 +49,7 @@ In the web app, [project fonts are automatically discovered](https://typst.app/d
 
 This template exports the `iut-orsay-report` function with the following named arguments:
 
-- `student-name`: Name of the PhD candidate [type: content]
+- `student-names`: Name of the students [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
 - `title`: Report title [content]
 - `subtitle`: Sub-title [content]
 - `keywords`: Keywords of the report subject [strings array]
@@ -58,7 +58,12 @@ This template exports the `iut-orsay-report` function with the following named a
 - `specialty`: Line mentioning the specialty [content]
 - `level`: Line mentioning the diploma level (e.g. first year, second year...) [content]
 - `report-date`: Date of the report [content]
-- `thesis-examiners`: List of thesis examiners [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
+- `report-type`: Type of report (`[stage]` or `[apprentissage]` or ignored)
+- `report-examiners`: List of report examiners [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
+- Optional:
+  - `company-logo`: logo of a company [path to a file]
+  - `show-abstract`: show or hide the abstract page [boolean, default: true]
+  - `students-in-headers`: show or hide the list of students from the page headers [boolean, default: false]
 
 Some spacings are adjustable, see [`src/lib.typ`](src/lib.typ) for the complete list of arguments.
 
@@ -67,32 +72,39 @@ The template will initialize your package with a sample call to the `iut-orsay-r
 ```typst
 #import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report
 
-#show: paris-saclay-thesis.with(
-  student-name: [Tiphaine Patraque],
-  title: [Rapport de projet S601],
+#show: iut-orsay-report.with(
+  student-names: (
+    (
+      last_name: [Patraque],
+      first_name: [Typhaine],
+    ),
+  ),
+  students-in-headers: false,
+  title: [Rapport d'apprentissage],
   subtitle: [Têtologie],
-  keywords: ("Causse", "sorcellerie", "magie occulte", "têtologie"
+  keywords: ("Causse", "sorcellerie", "magie occulte", "têtologie"),
   abstract: lorem(200),
   diploma: [BUT Sorcellerie],
   specialty: [Parcours A : magie des miroirs],
   level: [Troisième année],
-  report-date: [20 octobre 1955],
+  report-date: [16 février 2026],
+  report-type: [apprentissage],
   company-name: [Cercle des Sorcières],
-  thesis-examiners: (
+  report-examiners: (
     (
       name: [*Esmé Ciredutemps*],
       title: [Sorcière],
-      status: [Maîtresse d'apprentissage]
+      status: [Maîtresse d'apprentissage],
     ),
     (
       name: [*Perspicacia Tique*],
       title: [Sorcière],
-      status: [Tutrice]
+      status: [Tutrice],
     ),
     (
       name: [*Nac mac Feegle*],
       title: [Fées],
-      status: [Tuteurs]
+      status: [Tuteurs],
     ),
   ),
 )

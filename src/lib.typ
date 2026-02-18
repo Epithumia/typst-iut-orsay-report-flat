@@ -134,7 +134,7 @@
   show: codly-init.with()
   codly(languages: codly-languages)
   codly(stroke: 1pt + black, zebra-fill: none, number-format: none)
-  codly(display-icon: false, display-name: false, breakable: false)
+  codly(display-icon: false, display-name: true, breakable: false)
 
   set text(
     font: "Open Sans",

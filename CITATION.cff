@@ -2,29 +2,28 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: paris-saclay-thesis-flat
+title: iut-orsay-report-flat
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
 type: software
 authors:
-  - given-names: Sébastien
-    family-names: Mestrallet
-    orcid: 'https://orcid.org/0000-0002-4519-2814'
+  - given-names: Rafaël
+    family-names: Lopez
+    orcid: 'https://orcid.org/0009-0001-8583-5933'
 repository-code: >-
-  https://github.com/sebmestrallet/typst-paris-saclay-thesis-flat
+  https://github.com/Epithumia/typst-iut-orsay-report-flat.git
 url: >-
-  https://typst.app/universe/package/paris-saclay-thesis-flat/
+  https://typst.app/universe/package/iut-orsay-report-flat/
 abstract: >-
-  An unofficial, flat-design Typst template for Paris-Saclay
-  University theses
+  An unofficial, flat-design Typst template for IUT Orsay
+  reports
 keywords:
-  - thesis
-  - thesis-template
-  - phd-thesis
-  - phd-thesis-template
+  - report
+  - report-template
+  - iut-orsay
   - paris-saclay
   - typst
   - typst-template
 license: MIT-0
-version: 1.0.2
+version: 0.1.0

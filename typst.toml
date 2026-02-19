@@ -2,7 +2,7 @@
 
 [package]
 name = "iut-orsay-report-flat"
-version = "1.0.0"
+version = "0.1.0"
 entrypoint = "src/lib.typ"
 authors = ["Sébastien Mestrallet <@sebmestrallet>", "Rafaël Lopez <@Epithumia>"]
 license = "MIT-0"

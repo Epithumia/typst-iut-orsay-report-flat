@@ -70,7 +70,7 @@ Some spacings are adjustable, see [`src/lib.typ`](src/lib.typ) for the complete 
 The template will initialize your package with a sample call to the `iut-orsay-report` function in a show rule. If you want to change an existing project to use this template, you can add a show rule like this at the top of your file:
 
 ```typst
-#import "@preview/iut-orsay-report-flat:1.0.0": iut-orsay-report
+#import "@preview/iut-orsay-report-flat:0.1.0": iut-orsay-report
 
 #show: iut-orsay-report.with(
   student-names: (

@@ -1,4 +1,4 @@
-#import "@preview/iut-orsay-report-flat:0.1.0": figure-list, iut-orsay-report, lexicon, prune, remark, summary, table-list
+#import "@preview/iut-orsay-report-flat:0.1.1": figure-list, iut-orsay-report, lexicon, prune, remark, summary, table-list
 
 ///////////////////////////////////////////
 // 1/3 Si nécessaire, télécharger la police

@@ -49,7 +49,7 @@ In the web app, [project fonts are automatically discovered](https://typst.app/d
 
 This template exports the `iut-orsay-report` function with the following named arguments:
 
-- `student-names`: Name of the students [array of dictionaries, each with a `name`, `title` and `status` field, of type content]
+- `student-names`: Name of the students [array of dictionaries, each with a `last_name` and `first_name` field, of type content]
 - `title`: Report title [content]
 - `subtitle`: Sub-title [content]
 - `keywords`: Keywords of the report subject [strings array]
@@ -70,7 +70,7 @@ Some spacings are adjustable, see [`src/lib.typ`](src/lib.typ) for the complete 
 The template will initialize your package with a sample call to the `iut-orsay-report` function in a show rule. If you want to change an existing project to use this template, you can add a show rule like this at the top of your file:
 
 ```typst
-#import "@preview/iut-orsay-report-flat:0.1.0": iut-orsay-report
+#import "@preview/iut-orsay-report-flat:0.1.1": iut-orsay-report
 
 #show: iut-orsay-report.with(
   student-names: (
